@@ -17,3 +17,8 @@ eureka:
    fetchRegistry: true
    serviceUrl:
      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+
+  boot:
+    admin:
+      client:
+        url: http://localhost:1111
