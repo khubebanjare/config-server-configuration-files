@@ -1,8 +1,19 @@
+ci2:
+  server:
+    host: localhost
+
+spring:
+  cloud:
+    client:
+      hostname: ${ci2.server.host}
+
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${ci2.server.host}
+    prefer-ip-address: 'true'
+
   client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+   registerWithEureka: true
+   fetchRegistry: true
+   serviceUrl:
+     defaultZone: http://${eureka.instance.hostname}:8761/eureka/
