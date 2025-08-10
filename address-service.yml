@@ -36,3 +36,6 @@ eureka:
       defaultZone: http://localhost:8761/eureka/   # URL of Eureka Server
     register-with-eureka: true                     # Register with Eureka Server
     fetch-registry: true                            # Fetch registry from Eureka Server
+    registry-fetch-interval-seconds: 10  # default 30
+    lease-renewal-interval-in-seconds: 10  # how often client sends heartbeat (default 30)
+    lease-expiration-duration-in-seconds: 30  # how long Eureka waits to expire a client (default 90)
