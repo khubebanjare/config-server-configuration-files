@@ -71,8 +71,8 @@ resilience4j:
 
 service:
   url:
-    address-service: http://localhost:9081/api/addresses
-    department-service: http://localhost:9083/api/departments
+    address-service: /api/addresses
+    department-service: /api/departments
 
 eureka:
   client:
