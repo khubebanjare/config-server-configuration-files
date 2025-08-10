@@ -12,12 +12,6 @@ cloud:
 
 # Database configuration
 spring:
-  main:
-    allow-bean-definition-overriding: false
-  config:
-    import: "configserver:http://localhost:8888"
-  profiles:
-    active: dev
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/employee_service_db
     username: ${SPRING_DATASOURCE_USERNAME:root}
