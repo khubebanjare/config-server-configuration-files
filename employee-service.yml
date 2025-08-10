@@ -11,11 +11,18 @@ cloud:
         brokers: localhost:9092
 
 # Database configuration
-datasource:
-  url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/employee_service_db
-  username: ${SPRING_DATASOURCE_USERNAME:root}
-  password: ${SPRING_DATASOURCE_PASSWORD:root}
-  driver-class-name: com.mysql.cj.jdbc.Driver
+spring:
+  main:
+    allow-bean-definition-overriding: false
+  config:
+    import: "configserver:http://localhost:8888"
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/employee_service_db
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    password: ${SPRING_DATASOURCE_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   # Hikari Configuration
   hikari:
@@ -27,14 +34,14 @@ datasource:
     connection-timeout: 30000
 
 # JPA configuration
-jpa:
-  hibernate:
-    ddl-auto: update  # or 'validate' or 'create' or 'create-drop' depending on your need
-  show-sql: true
-  properties:
+  jpa:
     hibernate:
-      dialect: org.hibernate.dialect.MySQL8Dialect
-      format_sql: true
+      ddl-auto: update  # or 'validate' or 'create' or 'create-drop' depending on your need
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
 
 management:
   endpoints:
@@ -75,4 +82,6 @@ service:
 
 eureka:
   client:
-    enabled: false
+    enabled: true
+    service-url:
+      defaultZone: "http://localhost:8761/eureka/"

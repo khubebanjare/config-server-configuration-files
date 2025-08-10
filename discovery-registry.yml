@@ -1,0 +1,10 @@
+eureka:
+  instance:
+    hostname: localhost
+
+#actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
