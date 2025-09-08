@@ -69,10 +69,19 @@ resilience4j:
         slow-call-rate-threshold: 50
         slow-call-duration-threshold: 500ms
 
+  retry:
+    instances:
+      address-service:
+        max-attempts: 3
+        wait-duration: 500ms
+        retry-exceptions:
+          - feign.RetryableException
+          - java.io.IOException
+
 service:
   url:
-    address-service: /api/addresses
-    department-service: /api/departments
+    address-service: http://localhost:9081/api/addresses
+    department-service: http://localhost:9083/api/departments
 
 eureka:
   client:
