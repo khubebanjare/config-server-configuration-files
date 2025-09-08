@@ -102,3 +102,8 @@ eureka:
     registry-fetch-interval-seconds: 10  # default 30
     lease-renewal-interval-in-seconds: 10  # how often client sends heartbeat (default 30)
     lease-expiration-duration-in-seconds: 30  # how long Eureka waits to expire a client (default 90)
+
+logging:
+  level:
+    io.github.resilience4j: DEBUG
+    org.springframework.cloud.openfeign: DEBUG
