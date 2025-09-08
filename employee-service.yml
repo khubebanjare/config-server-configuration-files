@@ -58,11 +58,11 @@ resilience4j:
     instances:
       address-service:
         record-exceptions:
-          - feign.RetryableException
-          - java.io.IOException
-          - java.net.SocketTimeoutException
+          - "feign.RetryableException"
+          - "java.io.IOException"
+          - "java.net.SocketTimeoutException"
         ignore-exceptions:
-          - org.springframework.web.client.HttpClientErrorException
+          - "org.springframework.web.client.HttpClientErrorException"
         registerHealthIndicator: true
         event-consumer-buffer-size: 10
         failure-rate-threshold: 50
@@ -81,10 +81,12 @@ resilience4j:
         max-attempts: 3
         wait-duration: 500ms
         retry-exceptions:
-          - feign.RetryableException
-          - java.io.IOException
+          - "feign.RetryableException"
+          - "feign.FeignException"
+          - "java.io.IOException"
+          - "java.net.SocketTimeoutException"
         ignore-exceptions:
-          - org.springframework.web.client.HttpClientErrorException
+          - "org.springframework.web.client.HttpClientErrorException"
 service:
   url:
     address-service: http://localhost:9081/api/addresses
