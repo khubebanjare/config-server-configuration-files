@@ -59,6 +59,7 @@ resilience4j:
       address-service:
         record-exceptions:
           - "feign.RetryableException"
+          - "feign.FeignException"
           - "java.io.IOException"
           - "java.net.SocketTimeoutException"
         ignore-exceptions:
