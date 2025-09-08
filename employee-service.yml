@@ -83,7 +83,8 @@ resilience4j:
         retry-exceptions:
           - feign.RetryableException
           - java.io.IOException
-
+        ignore-exceptions:
+          - org.springframework.web.client.HttpClientErrorException
 service:
   url:
     address-service: http://localhost:9081/api/addresses
