@@ -41,17 +41,17 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
   health:
     circuitbreakers:
       enabled: true
   metrics:
     tags:
       enabled: true
-  endpoint:
-    health:
-      show-details: always
-      show-components: always
 
 resilience4j:
   circuitbreaker:
